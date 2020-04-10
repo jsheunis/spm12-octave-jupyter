@@ -7,6 +7,8 @@ make PLATFORM=octave
 make PLATFORM=octave install
 cd ${HOME}
 octave --no-gui --eval "addpath (fullfile (getenv (\"HOME\"), \"spm12\")); savepath ();"
+octave --no-gui --eval "addpath (fullfile (getenv (\"HOME\"), \"scripts\")); savepath ();"
+octave --no-gui --eval "addpath (fullfile (getenv (\"HOME\"), \"dicm2nii\")); savepath ();"
 
 aws s3 sync --no-sign-request s3://openneuro.org/ds000256 ds000256-download/ --exclude "*" --include "sub-CTS200/func/sub-CTS200_task-restbaseline_bold.nii.gz" --include "sub-CTS200/anat/sub-CTS200_T1w.nii.gz"
 aws s3 sync --no-sign-request s3://openneuro.org/ds000157 ds000157-download/ --exclude "*" --include "sub-01/*"
