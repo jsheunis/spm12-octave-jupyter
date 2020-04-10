@@ -1,6 +1,6 @@
 mkdir ${HOME}/scripts && curl -SL https://github.com/jsheunis/matlab-spm-scripts-jsh/archive/v0.1.tar.gz | tar -xzC ${HOME}/scripts --strip-components 1
-mkdir ${HOME}/dicm2nii && curl -SL https://github.com/xiangruili/dicm2nii/archive/v0.1.tar.gz | tar -xzC ${HOME}/dicm2nii --strip-components 1
-mkdir ${HOME}/spm12 && curl -SL https://github.com/xiangruili/dicm2nii/archive/master.tar.gz | tar -xzC ${HOME}/spm12 --strip-components 1
+mkdir ${HOME}/dicm2nii && curl -SL https://github.com/xiangruili/dicm2nii/archive/master.tar.gz | tar -xzC ${HOME}/dicm2nii --strip-components 1
+mkdir ${HOME}/spm12 && curl -SL https://github.com/spm/spm12/archive/r7771.tar.gz | tar -xzC ${HOME}/spm12 --strip-components 1
 curl -SL https://raw.githubusercontent.com/spm/spm-docker/master/octave/spm12_r7771.patch | patch -d ${HOME}/spm12 -p3
 cd ${HOME}/spm12/src
 make PLATFORM=octave
