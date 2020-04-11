@@ -2,13 +2,14 @@ mkdir ${HOME}/scripts && curl -SL https://github.com/jsheunis/matlab-spm-scripts
 mkdir ${HOME}/dicm2nii && curl -SL https://github.com/xiangruili/dicm2nii/archive/master.tar.gz | tar -xzC ${HOME}/dicm2nii --strip-components 1
 mkdir ${HOME}/spm12 && curl -SL https://github.com/spm/spm12/archive/r7771.tar.gz | tar -xzC ${HOME}/spm12 --strip-components 1
 curl -SL https://raw.githubusercontent.com/spm/spm-docker/master/octave/spm12_r7771.patch | patch -d ${HOME}/spm12 -p3
+
 cd ${HOME}/spm12/src
 make PLATFORM=octave
 make PLATFORM=octave install
+
 cd ${HOME}
-octave --no-gui --eval "addpath (fullfile (getenv (\"HOME\"), \"spm12\")); savepath ();"
 octave --no-gui --eval "addpath (fullfile (getenv (\"HOME\"), \"scripts\")); savepath ();"
 octave --no-gui --eval "addpath (fullfile (getenv (\"HOME\"), \"dicm2nii\")); savepath ();"
+octave --no-gui --eval "addpath (fullfile (getenv (\"HOME\"), \"spm12\")); savepath ();"
 
-aws s3 sync --no-sign-request s3://openneuro.org/ds000256 ds000256-download/ --exclude "*" --include "sub-CTS200/func/sub-CTS200_task-restbaseline_bold.nii.gz" --include "sub-CTS200/anat/sub-CTS200_T1w.nii.gz"
 aws s3 sync --no-sign-request s3://openneuro.org/ds000157 ds000157-download/ --exclude "*" --include "sub-01/*"
