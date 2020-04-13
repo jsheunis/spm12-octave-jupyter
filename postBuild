@@ -9,6 +9,7 @@ make PLATFORM=octave install
 
 cd ${HOME}/spm12/@file_array/private
 find . -name "mat2file*.*" -print0 | xargs -0 -I{} find '{}' \! -name "*.mex" -delete
+find . -name "file2mat*.*" -print0 | xargs -0 -I{} find '{}' \! -name "*.mex" -delete
 
 cd ${HOME}
 octave --no-gui --eval "addpath (fullfile (getenv (\"HOME\"), \"scripts\")); savepath ();"
