@@ -1,5 +1,5 @@
 curl
-octave=4.4.0
+octave
 liboctave-dev
 gnuplot
 ghostscript
